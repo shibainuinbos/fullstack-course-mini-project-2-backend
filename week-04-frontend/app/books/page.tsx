@@ -222,9 +222,11 @@ export default function BooksPage() {
                     {renderStatusBadge(book.status)}
                   </div>
                   
-                  <h3 className="text-xl font-bold text-slate-900 line-clamp-2 leading-tight group-hover:text-indigo-600 transition-colors duration-200">
-                    {book.title}
-                  </h3>
+                  <Link href={`/books/${book.id}`} className="block group/title">
+                    <h3 className="text-xl font-bold text-slate-900 line-clamp-2 leading-tight group-hover/title:text-indigo-600 transition-colors duration-200">
+                      {book.title}
+                    </h3>
+                  </Link>
                   
                   <p className="mt-2 text-sm font-medium text-slate-500">
                     by <span className="text-slate-700">{book.author}</span>
@@ -232,10 +234,19 @@ export default function BooksPage() {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                    Rating
-                  </span>
-                  {renderRating(book.rating)}
+                  <div>
+                    <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-0.5">
+                      Rating
+                    </span>
+                    {renderRating(book.rating)}
+                  </div>
+                  <Link
+                    href={`/books/${book.id}`}
+                    className="inline-flex items-center text-xs font-bold text-indigo-600 hover:text-indigo-800 transition-colors duration-200 gap-1 group/btn"
+                  >
+                    View Details
+                    <span className="transform group-hover/btn:translate-x-0.5 transition-transform duration-200">→</span>
+                  </Link>
                 </div>
               </div>
             ))}
