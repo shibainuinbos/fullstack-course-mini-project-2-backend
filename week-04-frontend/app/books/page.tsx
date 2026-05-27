@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+
 
 interface Book {
   id: number;
@@ -103,21 +105,39 @@ export default function BooksPage() {
             </p>
           </div>
           
-          <button
-            onClick={fetchBooks}
-            className="mt-4 md:mt-0 inline-flex items-center justify-center px-4 py-2 border border-slate-300 rounded-lg shadow-sm text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200"
-          >
-            <svg
-              className="mr-2 h-4 w-4 text-slate-500 hover:text-indigo-600"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          <div className="mt-4 md:mt-0 flex flex-wrap items-center gap-3">
+            <Link
+              href="/books/new"
+              className="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 hover:shadow transition-all duration-200"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 7.89M9 11l3 3L22 4" />
-            </svg>
-            Sync Library
-          </button>
+              <svg
+                className="mr-2 h-4 w-4 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+              Add New Book
+            </Link>
+
+            <button
+              onClick={fetchBooks}
+              className="inline-flex items-center justify-center px-4 py-2 border border-slate-300 rounded-lg shadow-sm text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200"
+            >
+              <svg
+                className="mr-2 h-4 w-4 text-slate-500 hover:text-indigo-600"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 7.89M9 11l3 3L22 4" />
+              </svg>
+              Sync Library
+            </button>
+          </div>
         </header>
 
         {/* Loading State Grid */}
@@ -175,8 +195,14 @@ export default function BooksPage() {
             </svg>
             <h3 className="mt-4 text-lg font-medium text-slate-900">Your shelf is empty</h3>
             <p className="mt-2 text-sm text-slate-500">
-              Add books using the FastAPI backend at <code className="text-indigo-600 px-1 py-0.5 bg-slate-100 rounded text-xs">/docs</code> to see them populate here.
+              Add books to your database to see them populate here.
             </p>
+            <Link
+              href="/books/new"
+              className="mt-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-semibold rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 shadow transition-colors duration-200"
+            >
+              Add Your First Book
+            </Link>
           </div>
         )}
 
