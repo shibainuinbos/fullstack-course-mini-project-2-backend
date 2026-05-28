@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+pydantic-settings
+python-dotenv
+# PostgreSQL driver only installed on non-Windows environments (like Linux Docker)
+# Windows local development defaults to SQLite which is built into Python out-of-the-box
+psycopg2-binary>=2.9.9; sys_platform != 'win32'
